@@ -96,8 +96,10 @@ brace errors that break a render.
   do not fake them: `input placeholder="Email"` (no positional label), `button "Sign in" primary`,
   `checkbox`/`radio`/`toggle`, `tabs`>`tab`, `list`>`item`/`slot`, `row`/`col`, `section "T"`, `tree`>`node`,
   `navbar`/`tabbar`/`sheet` for mobile, and `annotation "..." target="id" position=right` callouts only when
-  the plan wants labels. It renders as a sketch-style SVG that is always drawn in Wireloom's light theme, and
-  `check` reports a parse error as `file:line:col`, so run it. **Load `references/wireloom.md`** for the
+  the plan wants labels. It renders as a sketch-style SVG that follows the page's light/dark theme. Use icons rarely: only where they carry meaning
+  the text does not (tab bar/nav items, **icon-only buttons** like `button "🔍"`, status markers like `text "✅ Done"`),
+  never on every row or checkbox, and when in doubt use none. When one is needed, put an OS-native emoji in
+  the label rather than `icon=` (which only knows a small built-in set and draws a boxed letter otherwise). `check` reports a parse error as `file:line:col`, so run it. **Load `references/wireloom.md`** for the
   full primitive and attribute list before writing anything beyond a simple layout (it is the official
   Wireloom agent guide, condensed).
 - `<Svg src="./diagrams/power-path.svg" title="Power path" caption="Bench unit, splitter-fed" />`:

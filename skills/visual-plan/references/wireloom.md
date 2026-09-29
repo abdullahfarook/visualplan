@@ -17,7 +17,15 @@ UI write the real component.
   `file:line:col`. Run `check` after writing a wireframe.
 - Pick the specific primitive: `toggle`/`checkbox`/`radio` for controls (not `kv`), `tree`+`node` for file
   trees (not nested `list`), `menubar`+`menu`+`menuitem` for menus (`item` is only for `list`).
-- The wireframe always renders in Wireloom's light theme; do not try to theme it.
+- The page shows a light and a dark render automatically; do not try to theme it.
+- **Icons: rare, and OS-native emoji rather than `icon=`.** Add an icon only where it carries meaning the
+  text does not: tab bar and nav items (`tabitem "🏠 Home"`, `backbutton`), **icon-only buttons** (`button "🔍"`,
+  `button "⚙️"`, `button "➕"`, where the glyph is the whole label and no text fits), and status markers
+  (`text "✅ Deployed"`, `chip "⚠️ Blocked"`). **When in doubt, no icon.** Never put one on every row, checkbox,
+  list item, filter button, section title, or window title; a screen where most labels carry an emoji reads as
+  noise. Prefer emoji to `icon=`: `icon=` only knows the built-in names below and anything else draws a boxed
+  first letter, whereas an emoji renders in the viewer's system emoji font (colour, and the look varies by OS).
+  Use `icon=` only for a listed name when a monochrome glyph is wanted. One emoji per label at most.
 
 ## Containers
 
@@ -55,7 +63,7 @@ UI write the real component.
 
 Accents: `research military industry wealth approval warning danger success`. Icons: `credits research
 military industry influence approval faith authority computation tech policy ship planet leader gear
-warning lock check star plus minus` (unknown names fall back to a boxed letter).
+warning lock check star plus minus` (unknown names fall back to a boxed letter, so use an emoji in the label instead, and only where the rule above allows an icon).
 
 Every primitive accepts `id="..."`, used only as an annotation target.
 
