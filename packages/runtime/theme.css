@@ -1087,6 +1087,29 @@ label.vp-questions__option {
   height: auto;
 }
 
+/* A Wireloom wireframe inlines a light and a dark render; the page scheme shows one. */
+.vp-wl-dark {
+  display: none;
+}
+
+:root[data-theme='dark'] .vp-wl-light {
+  display: none;
+}
+
+:root[data-theme='dark'] .vp-wl-dark {
+  display: inline;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .vp-wl-light {
+    display: none;
+  }
+
+  :root:not([data-theme='light']) .vp-wl-dark {
+    display: inline;
+  }
+}
+
 .vp-svg__caption {
   margin-top: 0.45rem;
   font-size: 0.8rem;

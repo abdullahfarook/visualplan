@@ -13,8 +13,9 @@ interface MdastParent {
 
 /**
  * Convert ```wireloom fenced code blocks into `<Svg svg="..." />` MDX JSX elements. Wireloom's render
- * is async, so the SVG is produced here at build time (remark transformers may be async) and the
- * existing Svg component only frames it. A source that fails to parse becomes an `error` attribute,
+ * is async, so the SVGs are produced here at build time (remark transformers may be async) and the
+ * existing Svg component only frames them. Both a light and a dark render are inlined, and theme.css
+ * shows the one matching the page scheme. A source that fails to parse becomes an `error` attribute,
  * shown in place like any Svg error.
  */
 export function remarkWireloom() {
@@ -33,7 +34,12 @@ export function remarkWireloom() {
       targets.map(async ({ node, index, parent }, i) => {
         let result: { name: string; value: string }
         try {
-          result = { name: 'svg', value: (await render(`vp-wireloom-${i}`, node.value)).svg }
+          const light = await render(`vp-wireloom-${i}`, node.value, { theme: 'default' })
+          const dark = await render(`vp-wireloom-${i}-dark`, node.value, { theme: 'dark' })
+          result = {
+            name: 'svg',
+            value: `<span class="vp-wl-light">${light.svg}</span><span class="vp-wl-dark">${dark.svg}</span>`,
+          }
         } catch (error) {
           result = { name: 'error', value: error instanceof Error ? error.message : String(error) }
         }
