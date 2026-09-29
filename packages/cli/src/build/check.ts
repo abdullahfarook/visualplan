@@ -1,6 +1,7 @@
 import { readFile } from 'node:fs/promises'
 import { compile } from '@mdx-js/mdx'
 import { renderMermaidSVG } from 'beautiful-mermaid'
+import { parse as parseWireloom } from 'wireloom'
 import temml from 'temml'
 import remarkFrontmatter from 'remark-frontmatter'
 import remarkGfm from 'remark-gfm'
@@ -134,6 +135,21 @@ export async function checkSource(source: string): Promise<CheckIssue[]> {
           line: at.line,
           column: at.column,
           message: `Invalid mermaid diagram: ${reason}`,
+        })
+      }
+      return
+    }
+
+    if (codeNode.type === 'code' && codeNode.lang === 'wireloom') {
+      try {
+        parseWireloom(codeNode.value ?? '')
+      } catch (error) {
+        const at = codeNode.position?.start ?? { line: 1, column: 1 }
+        const reason = error instanceof Error ? error.message : String(error)
+        issues.push({
+          line: at.line,
+          column: at.column,
+          message: `Invalid wireloom wireframe: ${reason}`,
         })
       }
       return

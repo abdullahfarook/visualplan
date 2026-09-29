@@ -182,7 +182,7 @@ function startDescriptor(node: MdastNode): StartDescriptor | null {
   if (node.type === 'heading' && (node.depth ?? 0) <= 3) {
     return { type: `h${node.depth}`, label: normalizeWhitespace(textContent(node)), titled: true }
   }
-  if (node.type === 'code' && node.lang === 'mermaid') {
+  if (node.type === 'code' && (node.lang === 'mermaid' || node.lang === 'wireloom')) {
     return { type: 'mermaid', label: 'Diagram', titled: false }
   }
   if (node.type === 'mdxJsxFlowElement' && node.name) {

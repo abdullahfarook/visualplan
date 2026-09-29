@@ -5,6 +5,7 @@ import type { PluggableList } from 'unified'
 import { remarkMath } from './remark-math.js'
 import { remarkMermaid } from './remark-mermaid.js'
 import { remarkPlanBlocks } from './remark-plan-blocks.js'
+import { remarkWireloom } from './remark-wireloom.js'
 
 /**
  * The ordered remark plugin list shared by the CLI render path and the in-browser `/view`
@@ -20,5 +21,6 @@ export const remarkPlugins: PluggableList = [
   remarkGfm,
   remarkPlanBlocks,
   remarkMermaid,
+  remarkWireloom,
   remarkMath,
 ]

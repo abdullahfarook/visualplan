@@ -186,6 +186,9 @@ importers:
       vite-plugin-singlefile:
         specifier: ^2.3.3
         version: 2.3.3(rollup@4.62.2)(vite@8.0.16(@types/node@25.9.4)(esbuild@0.28.1)(tsx@4.22.4)(yaml@2.9.0))
+      wireloom:
+        specifier: ^0.7.0
+        version: 0.7.0
       zod:
         specifier: ^4.4.3
         version: 4.4.3
@@ -250,6 +253,9 @@ importers:
       unist-util-visit:
         specifier: ^5.1.0
         version: 5.1.0
+      wireloom:
+        specifier: ^0.7.0
+        version: 0.7.0
     devDependencies:
       '@types/hast':
         specifier: ^3.0.4
@@ -4220,6 +4226,10 @@ packages:
 
   widest-line@5.0.0:
     resolution: {integrity: sha512-c9bZp7b5YtRj2wOe6dlj32MK+Bx/M/d+9VB2SHM1OtsUHR0aV0tdP6DWh/iMt0kWi1t5g1Iudu6hQRNd1A4PVA==}
+    engines: {node: '>=18'}
+
+  wireloom@0.7.0:
+    resolution: {integrity: sha512-xxQ/+ja5clhTvQhSSZmGzVIPdehVn0tXzrbUag8KT4QiCGXJMmgLM5/BjWFlkEw51DJjBkRDeCJm2J/d2trPAg==}
     engines: {node: '>=18'}
 
   wrap-ansi@7.0.0:
@@ -8602,6 +8612,8 @@ snapshots:
   widest-line@5.0.0:
     dependencies:
       string-width: 7.2.0
+
+  wireloom@0.7.0: {}
 
   wrap-ansi@7.0.0:
     dependencies:

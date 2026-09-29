@@ -89,6 +89,17 @@ brace errors that break a render.
   this first for anything structural. (gantt and pie are not supported; use `<Chart>` for
   quantitative data. `check` now validates each diagram, so an unsupported type fails check with a
   `file:line:col` instead of rendering an error box.)
+- ` ```wireloom ` fenced block, for a low-fidelity UI wireframe (screen, dialog, form, settings page,
+  mobile flow). Use it when the plan is about what an interface looks like; use mermaid for structure
+  and flow. Rules: exactly one root `window "Title":`; 2 or 4 space indent (no tabs); a line ending in `:`
+  has children; strings in double quotes; flags are bare words. Every control has a real primitive, so
+  do not fake them: `input placeholder="Email"` (no positional label), `button "Sign in" primary`,
+  `checkbox`/`radio`/`toggle`, `tabs`>`tab`, `list`>`item`/`slot`, `row`/`col`, `section "T"`, `tree`>`node`,
+  `navbar`/`tabbar`/`sheet` for mobile, and `annotation "..." target="id" position=right` callouts only when
+  the plan wants labels. It renders as a sketch-style SVG that is always drawn in Wireloom's light theme, and
+  `check` reports a parse error as `file:line:col`, so run it. **Load `references/wireloom.md`** for the
+  full primitive and attribute list before writing anything beyond a simple layout (it is the official
+  Wireloom agent guide, condensed).
 - `<Svg src="./diagrams/power-path.svg" title="Power path" caption="Bench unit, splitter-fed" />`:
   inline a diagram that already exists as a **local `.svg` file**, such as an architecture or
   sequence diagram exported by another tool. `src` is relative to the plan file; the file is read,
